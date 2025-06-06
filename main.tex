@@ -1,42 +1,43 @@
 \documentclass[a4paper]{article}
-\usepackage[onehalfspacing]{setspace}
-\usepackage{geometry} % Required for adjusting page dimensions and margins
-\usepackage{amsmath,amsfonts,stmaryrd,amssymb,mathtools,dsfont} % Math packages
-\usepackage{tabularx}
-\usepackage{colortbl}
-\usepackage{listings}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsthm}
-\usepackage{enumerate}
-\usepackage{enumitem}
-\usepackage{subcaption}
-\usepackage{float}
-\usepackage[table,xcdraw]{xcolor}
-\usepackage{tikz-qtree}
-\usepackage{tikz}
-\usepackage{pgfplots}
+\usepackage[ruled]{algorithm2e}             % For writing algorithms with structured formatting
+\usepackage{amsmath}                        % Advanced math typesetting
+\usepackage{amssymb}                        % Additional math symbols
+\usepackage{amsthm}                         % Theorem environments
+\usepackage{amsfonts}                       % Additional math fonts
+\usepackage{bookmark}                       % Improves PDF bookmarks (better than hyperref's default)
+\usepackage{changepage,titlesec,fancyhdr}   % Adjusting layout, section titles, and headers/footers
+\usepackage[ddmmyyyy]{datetime}             % Custom date formatting
+\usepackage{cleveref}                       % Smarter cross-referencing (e.g., auto "Figure", "Table")
+\usepackage{colortbl}                       % Coloring table rows and cells
+\usepackage{diagbox}                        % Diagonal split in table cells
+\usepackage{dsfont}                         % Double stroke fonts (e.g., for indicator function)
+\usepackage{enumitem}                       % Better control over list environments
+\usepackage{float}                          % Precise control over figure/table placement
+\usepackage{forest}                         % Drawing tree structures
+\usepackage{geometry}                       % Customizing page dimensions and margins
+\usepackage{hyperref}                       % Clickable links for references and URLs
+\usepackage{listings}                       % Source code formatting
+\usepackage[framemethod=tikz]{mdframed}     % Creating framed environments using TikZ
+\usepackage{mathtools}                      % Extensions to amsmath (e.g., \coloneqq)
+\usepackage{microtype}                      % Enhances typographic appearance (kerning, spacing)
+\usepackage[onehalfspacing]{setspace}       % Set line spacing to 1.5
+\usepackage{pgfplots}                       % Plotting graphs and data
+\usepackage{subcaption}                     % Subfigures and subcaptions
+\usepackage{stmaryrd}                       % Extra math symbols (e.g., semantic brackets)
+\usepackage{tabularx}                       % Tables with automatic column width adjustment
+\usepackage[table,xcdraw]{xcolor}           % Coloring text and tables
+\usepackage{tikz}                           % Drawing diagrams and illustrations
+\usepackage{tikz-qtree}                     % Easy syntax for trees with TikZ
+
+% Package configurations
+
 \pgfplotsset{compat=1.17}
-\usepackage{forest}
-\usepackage{changepage,titlesec,fancyhdr} % For styling Header and Titles
+
 \pagestyle{fancy}
-\renewcommand{\headrulewidth}{0.5pt} % Linienbreite anpassen, falls gewünscht
-\renewcommand{\headrule}{
-    \makebox[\textwidth]{\rule{1.0\textwidth}{0.5pt}}
-}
-\usepackage{amsmath}
-\pagestyle{fancy}
-\usepackage{diagbox}
-\usepackage{xfrac}
-\usepackage{enumerate} % Custom item numbers for enumerations
-\usepackage[ruled]{algorithm2e} % Algorithms
-\usepackage[framemethod=tikz]{mdframed} % Allows defining custom boxed/framed environments
-\usepackage{listings} % File listings, with syntax highlighting
+
 \lstset{
 	basicstyle=\ttfamily, % Typeset listings in monospace font
 }
-
-\usepackage[ddmmyyyy]{datetime}
 
 \geometry{
 	paper=a4paper, % Paper size, change to letterpaper for US letter size
@@ -49,22 +50,30 @@
 	headsep=1cm, % Space from the top margin to the baseline of the header
 }
 
+
+\renewcommand{\headrulewidth}{0.5pt} % Adjust lineheight of the header rule
+\renewcommand{\headrule}{
+    \makebox[\textwidth]{\rule{1.0\textwidth}{0.5pt}}
+}
+
 % Default config
-\lhead{[Subject Name]]\\[Term]}
-\chead{\bfseries{\vspace{0.5\baselineskip}[Assignment Title]}}
-\rhead{[Name of 1st Author], [Matr. Nr of 1st Author]\\[Name of 2nd Author], {Matr. Nr of 2nd Author]}}
+\lhead{Subject Name\\Term}
+\chead{\bfseries{\vspace{0.5\baselineskip}Assignment Title}}
+\rhead{Name of 1st Author, Matr. Nr of 1st Author\\Name of 2nd Author, {Matr. Nr of 2nd Author}}
 
 % UNCOMMENT TO USE: Config for Single Author
-% \lhead{\vspace{0.5\baselineskip}[Assignment Title]}
-% \chead{\bfseries{[Subject Name]\\[Term]}}
-% \rhead{\vspace{0.5\baselineskip}[Name of 1st Author], [Mtr. Nr of 1st Author]}
+% \lhead{\vspace{0.5\baselineskip}Assignment Title}
+% \chead{\bfseries{Subject Name\\Term}}
+% \rhead{\vspace{0.5\baselineskip}Name of 1st Author, Mtr. Nr of 1st Author}
 
 % UNCOMMENT TO USE: Config for 3-4 Authors
-% \lhead{[Name of 1st Author], [Matr. Nr of 1st Author]\\[Name of 2nd Author], [Matr. Nr of 2nd Author]}
-% \chead{\bfseries{\vspace{0.5\baselineskip}HL-BPR Praktikum SS25\\Blatt 06}}
-% \rhead{[Name of 3rd Author], [Matr. Nr of 3rd Author]\\[Name of 4th Author], [Matr. Nr of 4th Author]}
+% \lhead{Name of 1st Author, Matr. Nr of 1st Author\\Name of 2nd Author, Matr. Nr of 2nd Author}
+% \chead{\bfseries{\vspace{0.5\baselineskip}Subject Name\\Assignment Title}}
+% \rhead{Name of 3rd Author, Matr. Nr of 3rd Author\\Name of 4th Author, Matr. Nr of 4th Author}
+
 \fancyheadoffset[R]{0cm}
-
+\setcounter{section}{4} % Start section numbering from 4 (e.g. for Assignment 4)
+\setcounter{page}{1} % Start page numbering from 1
 \begin{document}
-
+\subsection{}
 \end{document}
