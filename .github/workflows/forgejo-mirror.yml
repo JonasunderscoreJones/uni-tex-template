@@ -1,0 +1,44 @@
+name: Mirror Forgejo to GitHub
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # every hour
+
+env:
+  FORGEJO_OWNER: Jonas_Jones
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set GitHub owner and repo variables
+        id: vars
+        run: |
+          OWNER=$(echo "${GITHUB_REPOSITORY}" | cut -d'/' -f1)
+          REPO=$(echo "${GITHUB_REPOSITORY}" | cut -d'/' -f2)
+          echo "OWNER=$OWNER" >> $GITHUB_OUTPUT
+          echo "REPO=$REPO" >> $GITHUB_OUTPUT
+
+      - name: Clone Forgejo repo and push branches and tags safely
+        env:
+          FORGEJO_OWNER: ${{ env.FORGEJO_OWNER }}
+          OWNER: ${{ steps.vars.outputs.OWNER }}
+          REPO: ${{ steps.vars.outputs.REPO }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          FORGEJO_URL="https://git.jonasjones.dev/${FORGEJO_OWNER}/${REPO}.git"
+          GITHUB_REPO_URL="https://x-access-token:${GITHUB_TOKEN}@github.com/${OWNER}/${REPO}.git"
+
+          git clone --bare "$FORGEJO_URL" forgejo.git
+          cd forgejo.git
+
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+          git remote add github "$GITHUB_REPO_URL"
+
+          # Push all branches without deleting any remote branch
+          git push github refs/heads/*:refs/heads/*
+
+          # Push all tags
+          git push github refs/tags/*:refs/tags/*
