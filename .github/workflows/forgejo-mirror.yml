@@ -3,6 +3,7 @@ name: Mirror Forgejo to GitHub
 on:
   schedule:
     - cron: '0 * * * *'  # every hour
+  workflow_dispatch:
 
 env:
   FORGEJO_OWNER: Jonas_Jones
