@@ -1,6 +1,6 @@
 # uni-tex-template
 
-The Latex Template for my University Assignments
+The Latex Template for my University Assignments.
 
 ## Overview
 - Inclusion of all required packages and configuration
