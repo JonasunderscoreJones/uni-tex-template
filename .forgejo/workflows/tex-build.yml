@@ -1,31 +1,40 @@
-name: Build LaTeX Document
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
+name: build-latex
+on: [ push, pull_request ]
 
 jobs:
-  build-latex:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: docker
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: checkout repository
+        uses: https://code.forgejo.org/actions/checkout@v4
 
-      - name: Install LaTeX
+      - name: restore cached LaTeX packages
+        uses: https://code.forgejo.org/actions/cache/restore@v4
+        with:
+          path: /var/lib/apt/lists
+          key: ${{ runner.os }}-texlive
+
+      - name: install LaTeX
         run: |
           sudo apt-get update
           sudo apt-get install -y texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
 
-      - name: Compile LaTeX document
+      - name: compile LaTeX document
         run: |
           pdflatex -interaction=nonstopmode main.tex
-          pdflatex -interaction=nonstopmode main.tex  # run twice for refs
+          pdflatex -interaction=nonstopmode main.tex
 
-      - name: Upload PDF artifact
-        uses: actions/upload-artifact@v3
+      - name: capture PDF artifact
+        uses: https://code.forgejo.org/forgejo/upload-artifact@v4
         with:
           name: main-pdf
           path: main.pdf
+          if-no-files-found: error
+
+      - name: cache LaTeX packages
+        if: ${{ github.ref_name == github.event.repository.default_branch }}
+        uses: https://code.forgejo.org/actions/cache/save@v4
+        with:
+          path: /var/lib/apt/lists
+          key: ${{ runner.os }}-texlive
