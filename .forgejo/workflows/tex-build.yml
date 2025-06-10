@@ -17,8 +17,8 @@ jobs:
 
       - name: install full TeX Live
         run: |
-          sudo apt-get update
-          sudo apt-get install -y texlive-full
+          apt-get update
+          apt-get install -y texlive-full
 
       - name: compile LaTeX document
         run: |
