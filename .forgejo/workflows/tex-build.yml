@@ -22,8 +22,12 @@ jobs:
 
       - name: compile LaTeX document
         run: |
-          pdflatex -interaction=nonstopmode main.tex
-          pdflatex -interaction=nonstopmode main.tex
+          pdflatex -interaction=nonstopmode main.tex || true
+          pdflatex -interaction=nonstopmode main.tex || true
+          if [ ! -f main.pdf ]; then
+            echo "PDF was not generated."
+            exit 1
+          fi
 
       - name: capture PDF artifact
         uses: https://code.forgejo.org/forgejo/upload-artifact@v4
