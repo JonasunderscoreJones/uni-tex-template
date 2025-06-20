@@ -36,7 +36,7 @@ jobs:
       - name: capture PDF artifact
         uses: https://code.forgejo.org/forgejo/upload-artifact@v4
         with:
-          name: main-pdf
+          name: main-pdf.zip
           path: main.pdf
           if-no-files-found: error
 
