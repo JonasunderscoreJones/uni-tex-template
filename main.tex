@@ -29,8 +29,10 @@
 \usepackage{tikz}                           % Drawing diagrams and illustrations
 \usepackage{tikz-qtree}                     % Easy syntax for trees with TikZ
 
-% Package configurations
+% Document variables
+\newcommand{\assignmentNumber}{1} % Assignment number
 
+% Package configurations
 \pgfplotsset{compat=1.17}
 
 \pagestyle{fancy}
@@ -45,7 +47,7 @@
 	bottom=3cm, % Bottom margin
 	left=2.5cm, % Left margin
 	right=2.5cm, % Right margin
-	headheight=25pt, % Header height
+	headheight=31pt, % Header height
 	footskip=1.5cm, % Space from the bottom margin to the baseline of the footer
 	headsep=1cm, % Space from the top margin to the baseline of the header
 }
@@ -72,7 +74,7 @@
 % \rhead{Name of 3rd Author, Matr. Nr of 3rd Author\\Name of 4th Author, Matr. Nr of 4th Author}
 
 \fancyheadoffset[R]{0cm}
-\setcounter{section}{4} % Start section numbering from 4 (e.g. for Assignment 4)
+\setcounter{section}{\assignmentNumber} % Start section numbering from 4 (e.g. for Assignment 4)
 \setcounter{page}{1} % Start page numbering from 1
 \begin{document}
 \subsection{[Exercise Title]}
