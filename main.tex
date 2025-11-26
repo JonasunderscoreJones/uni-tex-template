@@ -45,20 +45,25 @@
 \usepackage{xparse}                         % Easy modern commands
 
 % Languages
-\usepackage[english]{babel}
-% \usepackage[ngerman]{babel}
-% \usepackage[german]{babel} % old german orthography
-% \usepackage[french]{babel}
-% \usepackage[spanish]{babel}
-% \usepackage[italian]{babel}
-% \usepackage[russian]{babel}
-% \usepackage[portuguese]{babel}
-% \usepackage[dutch]{babel}
-% \usepackage[swedish]{babel}
-% \usepackage[polish]{babel}
-% \usepackage[czech]{babel}
-% \usepackage[hungarian]{babel}
-% \usepackage[greek]{babel}
+% command to load the appropriate babel package
+\newcommand{\documentlanguage}[1]{%
+  \ifthenelse{\equal{#1}{en}}{\usepackage[english]{babel}}{}%
+  \ifthenelse{\equal{#1}{de}}{\usepackage[ngerman]{babel}}{}%
+  \ifthenelse{\equal{#1}{fr}}{\usepackage[french]{babel}}{}%
+  \ifthenelse{\equal{#1}{es}}{\usepackage[spanish]{babel}}{}%
+  \ifthenelse{\equal{#1}{it}}{\usepackage[italian]{babel}}{}%
+  \ifthenelse{\equal{#1}{ru}}{\usepackage[russian]{babel}}{}%
+  \ifthenelse{\equal{#1}{pt}}{\usepackage[portuguese]{babel}}{}%
+  \ifthenelse{\equal{#1}{nl}}{\usepackage[dutch]{babel}}{}%
+  \ifthenelse{\equal{#1}{sv}}{\usepackage[swedish]{babel}}{}%
+  \ifthenelse{\equal{#1}{pl}}{\usepackage[polish]{babel}}{}%
+  \ifthenelse{\equal{#1}{cs}}{\usepackage[czech]{babel}}{}%
+  \ifthenelse{\equal{#1}{hu}}{\usepackage[hungarian]{babel}}{}%
+  \ifthenelse{\equal{#1}{el}}{\usepackage[greek]{babel}}{}%
+}
+
+% Set document language
+\documentlanguage{en}
 
 % Biblatex resources
 % \addbibresource{sources.bib}
