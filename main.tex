@@ -12,6 +12,7 @@
 \usepackage{bookmark}                       % Improves PDF bookmarks (better than hyperref's default)
 \usepackage{braket}                         % more brakets for scientific notations
 \usepackage{changepage,titlesec,fancyhdr}   % Adjusting layout, section titles, and headers/footers
+\usepackage{cancel}                         % fFr cancelling terms in equations
 \usepackage[ddmmyyyy]{datetime}             % Custom date formatting
 \usepackage{cleveref}                       % Smarter cross-referencing (e.g., auto "Figure", "Table")
 \usepackage{csquotes}                       % qutation handling
@@ -86,6 +87,9 @@
 \newcommand{\integral}{\int\limits}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\R}{\mathbb{R}}
+
+% Cancel-color
+\renewcommand{\CancelColor}{\color{prettypurple}}
 
 % Box
 \newcommand{\answer}[1]{%
