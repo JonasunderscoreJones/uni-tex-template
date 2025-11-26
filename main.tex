@@ -4,6 +4,11 @@
 \usepackage{amssymb}                        % Additional math symbols
 \usepackage{amsthm}                         % Theorem environments
 \usepackage{amsfonts}                       % Additional math fonts
+\usepackage[
+    style=footnote-dw,
+    %autocite=footnote,
+    backend=bibtex
+]{biblatex}                                 % bib for citations
 \usepackage{bookmark}                       % Improves PDF bookmarks (better than hyperref's default)
 \usepackage{braket}                         % more brakets for scientific notations
 \usepackage{changepage,titlesec,fancyhdr}   % Adjusting layout, section titles, and headers/footers
@@ -48,6 +53,9 @@
 % \usepackage[czech]{babel}
 % \usepackage[hungarian]{babel}
 % \usepackage[greek]{babel}
+
+% Biblatex resources
+% \addbibresource{sources.bib}
 
 % Custom Colors
 \definecolor{mygray}{HTML}{808080}
