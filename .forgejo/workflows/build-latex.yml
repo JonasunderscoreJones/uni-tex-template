@@ -44,5 +44,5 @@ jobs:
         if: ${{ github.ref_name == github.event.repository.default_branch }}
         uses: https://code.forgejo.org/actions/cache/save@v4
         with:
-          path: /var/lib/apt/lists
+          path: /var/cache/apt/archives
           key: ${{ runner.os }}-texlive-full
